@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My issues</title>
+
+    <link rel="stylesheet" href="Complaint-Registry-CLG/src/ui/colors.css">
+    <link rel="stylesheet" href="Complaint-Registry-CLG/src/ui/typography.css">
+    <link rel="stylesheet" href="Complaint-Registry-CLG/src/ui/buttons.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar Layout */
+        .navbar {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        /* Main Container Layout */
+        .main-container {
+            max-width: 950px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+        }
+
+        /* Header & Summary Bar */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent-highlight);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .page-header p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        .issue-counter {
+            padding: 0.45rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        /* Issue Cards Stack */
+        .issues-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .issue-card {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .issue-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .issue-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.82rem;
+            opacity: 0.8;
+        }
+
+        .category-tag {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            padding: 0.3rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            border: 1px solid var(--accent-highlight);
+        }
+
+        .status-pending {
+            background-color: var(--bg-main);
+            color: var(--accent-highlight);
+        }
+
+        .status-progress {
+            background-color: var(--bg-navbar);
+            color: var(--accent-highlight);
+        }
+
+        .status-resolved {
+            background-color: var(--accent-highlight);
+            color: var(--text-on-dark);
+        }
+
+        .issue-title {
+            font-size: 1.3rem;
+            line-height: 1.3;
+        }
+
+        .issue-description {
+            font-size: 0.96rem;
+            line-height: 1.55;
+            opacity: 0.9;
+        }
+
+        .issue-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.85rem;
+            border-top: 1px solid rgba(80, 75, 56, 0.15);
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="theme-bg font2">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar theme-navbar">
+        <div class="navbar-left">
+            <a href="dashboard.html" class="navbar-brand font1">Complaint Box</a>
+        </div>
+
+        <div class="btn-search-bar">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+            </svg>
+            <input type="text" placeholder="Search your issues...">
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        
+        <div class="page-header">
+            <div>
+                <h1 class="font1">My issues</h1>
+                <p>History and current resolution status of complaints submitted by you.</p>
+            </div>
+            <!-- Total count badge (PHP team can echo count($myIssues) here) -->
+            <div class="theme-list issue-counter font3">
+                Total Filed: 3
+            </div>
+        </div>
+
+        <div class="issues-list">
+
+            <!-- 
+              PHP TEAM NOTE: 
+              Query issues filtered strictly by the logged-in user's ID (WHERE user_id = $_SESSION['user_id']).
+              Loop through $myIssues below:
+              <?php foreach($myIssues as $issue): ?>
+            -->
+
+            <!-- Sample Issue 1: Pending -->
+            <article class="issue-card theme-list">
+                <div class="issue-top-row">
+                    <div class="issue-meta font3">
+                        <span>#CMP-1042</span>
+                        <span>•</span>
+                        <span class="category-tag">Electrical</span>
+                    </div>
+                    <span class="status-badge status-pending font3">Pending</span>
+                </div>
+                
+                <h2 class="issue-title font1">Ceiling fan regulator not working in Room 312</h2>
+                <p class="issue-description">
+                    The speed regulator is stuck at maximum speed and makes a sparking sound when adjusted. Needs replacement.
+                </p>
+
+                <div class="issue-footer font3">
+                    <span>Filed on: 12 Nov 2026</span>
+                    <span>Location: Hall-3, I-Block, 3rd Floor</span>
+                </div>
+            </article>
+
+            <!-- Sample Issue 2: In Progress -->
+            <article class="issue-card theme-list">
+                <div class="issue-top-row">
+                    <div class="issue-meta font3">
+                        <span>#CMP-1019</span>
+                        <span>•</span>
+                        <span class="category-tag">Internet / Wi-Fi</span>
+                    </div>
+                    <span class="status-badge status-progress font3">In Progress</span>
+                </div>
+                
+                <h2 class="issue-title font1">Frequent packet loss on 3rd Floor Wing-A Access Point</h2>
+                <p class="issue-description">
+                    Wi-Fi disconnects every 10 minutes during evening hours despite full signal bars.
+                </p>
+
+                <div class="issue-footer font3">
+                    <span>Filed on: 05 Nov 2026</span>
+                    <span>Location: Hall-3, I-Block, 3rd Floor</span>
+                </div>
+            </article>
+
+            <!-- Sample Issue 3: Resolved -->
+            <article class="issue-card theme-list">
+                <div class="issue-top-row">
+                    <div class="issue-meta font3">
+                        <span>#CMP-0984</span>
+                        <span>•</span>
+                        <span class="category-tag">Plumbing</span>
+                    </div>
+                    <span class="status-badge status-resolved font3">Resolved</span>
+                </div>
+                
+                <h2 class="issue-title font1">Leaking washbasin tap in common washroom</h2>
+                <p class="issue-description">
+                    Continuous water leakage from the second tap near the corridor entrance.
+                </p>
+
+                <div class="issue-footer font3">
+                    <span>Filed on: 24 Oct 2026</span>
+                    <span>Resolved on: 26 Oct 2026</span>
+                </div>
+            </article>
+
+            <!-- <?php endforeach; ?> -->
+
+        </div>
+
+    </main>
+
+</body>
+</html>
