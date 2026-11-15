@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Emergency Contacts</title>
+
+    <link rel="stylesheet" href="Complaint-Registry-CLG/src/ui/colors.css">
+    <link rel="stylesheet" href="Complaint-Registry-CLG/src/ui/typography.css">
+    <link rel="stylesheet" href="Complaint-Registry-CLG/src/ui/buttons.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Main Container Layout */
+        .main-container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            flex: 1;
+        }
+
+        .page-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid var(--accent-highlight);
+        }
+
+        /* Contact Grid */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Individual Card styling using .theme-list */
+        .contact-card {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .role-tag {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+            opacity: 0.8;
+            display: inline-block;
+        }
+
+        .person-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .shift-text {
+            font-size: 0.9rem;
+            opacity: 0.75;
+            margin-bottom: 1.2rem;
+        }
+
+        .phone-display {
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: block;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(80, 75, 56, 0.15);
+        }
+
+        .card-footer {
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body class="theme-bg font2">
+
+    <!-- Navigation Bar using theme-navbar -->
+    <nav class="navbar theme-navbar">
+        <a href="dashboard.html" class="navbar-brand font1">Complaint Box</a>
+        <div>
+            <div class="btn-search-bar">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+                <input type="text" placeholder="Search contacts...">
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        
+        <div class="page-header">
+            <h1 class="font1">Emergency Contacts Directory</h1>
+            <p>Immediate assistance numbers for medical emergencies, hostel administration, caretakers, and security personnel.</p>
+        </div>
+
+        <!-- SECTION 1: MEDICAL & EMERGENCY SERVICES -->
+        <h2 class="section-title font1">Medical & Emergency Services</h2>
+        <div class="contacts-grid">
+
+            <!-- PHC Ambulance Card -->
+            <div class="contact-card theme-list">
+                <div>
+                    <span class="role-tag font3">Medical Emergency</span>
+                    <h3 class="person-name font1">PHC Ambulance</h3>
+                    <p class="shift-text">Availability: 24/7 Campus Medical Response</p>
+                </div>
+                <div class="card-footer">
+                    <span class="phone-display font3">+91 98765 43200</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECTION 2: ADMINISTRATION & CARETAKERS -->
+        <h2 class="section-title font1">Administration & Caretakers</h2>
+        <div class="contacts-grid">
+
+            <!-- 
+              PHP TEAM NOTE: 
+              Replace the static cards below with a dynamic loop fetched from your database:
+              <?php foreach($adminContacts as $contact): ?>
+            -->
+
+            <!-- Warden Card -->
+            <div class="contact-card theme-list">
+                <div>
+                    <span class="role-tag font3">Chief Warden</span>
+                    <h3 class="person-name font1">Dr. Rajesh Sharma</h3>
+                    <p class="shift-text">Availability: 24/7 (Escalation Only)</p>
+                </div>
+                <div class="card-footer">
+                    <span class="phone-display font3">+91 98765 43210</span>
+                </div>
+            </div>
+
+            <!-- Day Caretaker Card -->
+            <div class="contact-card theme-list">
+                <div>
+                    <span class="role-tag font3">Day Caretaker</span>
+                    <h3 class="person-name font1">Mr. Suresh Verma</h3>
+                    <p class="shift-text">Shift: 8:00 AM – 8:00 PM</p>
+                </div>
+                <div class="card-footer">
+                    <span class="phone-display font3">+91 98765 43211</span>
+                </div>
+            </div>
+
+            <!-- Night Caretaker Card -->
+            <div class="contact-card theme-list">
+                <div>
+                    <span class="role-tag font3">Night Caretaker</span>
+                    <h3 class="person-name font1">Mr. Ramesh Patel</h3>
+                    <p class="shift-text">Shift: 8:00 PM – 8:00 AM</p>
+                </div>
+                <div class="card-footer">
+                    <span class="phone-display font3">+91 98765 43212</span>
+                </div>
+            </div>
+
+            <!-- <?php endforeach; ?> -->
+
+        </div>
+
+        <!-- SECTION 3: HOSTEL SECURITY GUARDS -->
+        <h2 class="section-title font1">Hostel Security Guards</h2>
+        <div class="contacts-grid">
+
+            <!-- 
+              PHP TEAM NOTE: 
+              <?php foreach($guardContacts as $guard): ?>
+            -->
+
+            <!-- Guard 1 -->
+            <div class="contact-card theme-list">
+                <div>
+                    <span class="role-tag font3">Guard 1 (Main Gate)</span>
+                    <h3 class="person-name font1">Mr. Vikram Singh</h3>
+                    <p class="shift-text">Shift: Morning (6:00 AM – 2:00 PM)</p>
+                </div>
+                <div class="card-footer">
+                    <span class="phone-display font3">+91 98765 43213</span>
+                </div>
+            </div>
+
+            <!-- Guard 2 -->
+            <div class="contact-card theme-list">
+                <div>
+                    <span class="role-tag font3">Guard 2 (Main Gate)</span>
+                    <h3 class="person-name font1">Mr. Manoj Tiwari</h3>
+                    <p class="shift-text">Shift: Evening (2:00 PM – 10:00 PM)</p>
+                </div>
+                <div class="card-footer">
+                    <span class="phone-display font3">+91 98765 43214</span>
+                </div>
+            </div>
+
+            <!-- Guard 3 -->
+            <div class="contact-card theme-list">
+                <div>
+                    <span class="role-tag font3">Guard 3 (Night Patrol)</span>
+                    <h3 class="person-name font1">Mr. Deepak Yadav</h3>
+                    <p class="shift-text">Shift: Night (10:00 PM – 6:00 AM)</p>
+                </div>
+                <div class="card-footer">
+                    <span class="phone-display font3">+91 98765 43215</span>
+                </div>
+            </div>
+
+            <!-- <?php endforeach; ?> -->
+
+        </div>
+
+    </main>
+
+</body>
+</html>
